@@ -1,6 +1,6 @@
 import unittest
 import sys
-sys.path.append("class\\")
+sys.path.append("class/")
 from RPNCalculator import RPNCalculator
 
 class RPNCalculatorTest(unittest.TestCase):
