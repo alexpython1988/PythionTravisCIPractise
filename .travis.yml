@@ -5,4 +5,4 @@ python:
 # cache: pip
 # install:
 #   - pip install -r requirements.txt
-script: python myunittestp.py
+script: python3 myunittestp.py
