@@ -1,8 +1,8 @@
 language: python
+sudo: false
 python:
-  - 3.5
-  - 3.6
-# cache: pip
+  - "3.5"
+  - "3.6"
 # install:
-#   - pip install -r requirements.txt
-script: python3 myunittestp.py
+#   "pip install -r requirements.txt"
+script: python myunittestp.py
