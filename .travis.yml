@@ -7,7 +7,7 @@ notifications: # set notification options
     on_success: always
     on_failure: always
   # Or we could just disable all email
-  email: false
+  # email: false
 
 language: python
 
@@ -19,11 +19,12 @@ python:
 
 install: pip install -r requirements.txt
 
-jobs:
-  include:
-    - stage: test
-      script: python myunittestp.py
-      script: python myunittestq.py
+# jobs:
+#   include:
+#     - stage: test
+script: 
+      - python myunittestp.py
+      - python myunittestq.py
 
 # matirx:
 #   include:
