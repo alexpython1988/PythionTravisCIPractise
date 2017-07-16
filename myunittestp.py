@@ -1,5 +1,6 @@
 import unittest
 import sys
+#use linux style
 sys.path.append("class/")
 from RPNCalculator import RPNCalculator
 

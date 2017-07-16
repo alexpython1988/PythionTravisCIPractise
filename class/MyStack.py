@@ -1,6 +1,9 @@
 class MyStack:
 	#LIFO
-	__data = []
+	__data = None
+
+	def __init__(self):
+		self.__data = []
 
 	def push(self, ele):
 		self.__data.append(ele)
@@ -13,3 +16,9 @@ class MyStack:
 
 	def peek(self, index = -1):
 		return self.__data[index]
+
+	def size(self):
+		return len(self.__data)
+
+	def clear(self):
+		self.__data = []

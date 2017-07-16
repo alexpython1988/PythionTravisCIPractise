@@ -1,1 +1,3 @@
 some/
+__pycache__/
+*.txt
