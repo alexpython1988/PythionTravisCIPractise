@@ -25,7 +25,7 @@ install: pip install -r requirements.txt
 script: 
       # - python myunittestp.py
       # - python myunittestq.py
-      - nosetests myunittestq myunittestp mynosetest -v --with-coverage
+      - nosetests -w tests myunittestq myunittestp mynosetest -v --with-coverage
 
 # matirx:
 #   include:
