@@ -6,10 +6,12 @@ class MyStack:
 		self.__data = []
 
 	def push(self, ele):
-		self.__data.append(ele)
+		#self.__data.append(ele)
+		self.__data.insert(0, ele)
 
 	def pop(self):
-		return self.__data.pop()
+		# return self.__data.pop()
+		return self.__data.pop(0)
 		
 	def is_empty(self):
 		return len(self.__data) == 0
