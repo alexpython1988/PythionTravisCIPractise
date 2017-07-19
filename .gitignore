@@ -1,2 +1,4 @@
 some/
 __pycache__/
+*.xml
+*.coverage

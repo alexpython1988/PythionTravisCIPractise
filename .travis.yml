@@ -23,8 +23,9 @@ install: pip install -r requirements.txt
 #   include:
 #     - stage: test
 script: 
-      - python myunittestp.py
-      - python myunittestq.py
+      # - python myunittestp.py
+      # - python myunittestq.py
+      - nosetests myunittestq myunittestp mynosetest -v --with-coverage
 
 # matirx:
 #   include:
