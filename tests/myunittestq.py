@@ -38,7 +38,7 @@ class MyStackTest(unittest.TestCase):
 
 	# only work under linux because of SIGALRM not work in windows
 	#@timeout_decorator.timeout(0.5)
-	@timed(3)
+	@timed(10)
 	def test_large_num_push_pop(self):
 		for i in range(100001):
 			self.stack.push(i)
