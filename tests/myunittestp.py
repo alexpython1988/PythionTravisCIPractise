@@ -5,6 +5,7 @@ sys.path.append("../uclass/")
 from RPNCalculator import RPNCalculator
 import time
 from MyStack import MyStack
+from nose.tools import nottest #works (decorated testcases are ignored, but istest does not work in this case)
 
 class RPNCalculatorTest(unittest.TestCase):
 	calc = None
@@ -50,6 +51,7 @@ class RPNCalculatorTest(unittest.TestCase):
 		#using assertalmostequal we can use either places (how mang digits) or delta (diff between two elements)
 		self.assertAlmostEqual(self.calc.get_result(), -0.99, msg="check sin() function in RNPCalculator", delta=0.01)
 
+	@nottest
 	def test_sin_degree(self):
 		self.calc.input_work("30 d sin")
 		self.assertEqual(round(self.calc.get_result(), 2), 0.5)		
@@ -80,6 +82,7 @@ class MyStackTest(unittest.TestCase):
 			print("{}: {:.3f}s".format(test_id, t))
 		#self.stack.clear()
 
+	@nottest
 	def test_push_peek(self):
 		self.stack.push("right")
 		self.assertEqual(self.stack.peek(), "right")
