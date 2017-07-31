@@ -19,9 +19,6 @@ python:
 install: pip install -r requirements.txt
 
 #set up database: mongodb 
-# services:
-#   - mongodb
-
 addons:
   apt:
     sources:
@@ -30,6 +27,8 @@ addons:
   packages:
       - mongodb-org
 
+services:
+   - mongodb
 # jobs:
 #   include:
 #     - stage: test
