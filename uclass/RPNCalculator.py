@@ -2,6 +2,7 @@ from MyStack import MyStack
 import math
 import re
 
+
 class RPNCalculator:
 	__input_data = ""
 	__stack = None

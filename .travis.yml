@@ -13,11 +13,14 @@ language: python
 sudo: false
 
 python:
-  - "3.3"
   - "3.6"
 # script: python myunittestp.py
 
 install: pip install -r requirements.txt
+
+#set up database: mongodb 
+services:
+  - mongodb
 
 # jobs:
 #   include:
@@ -25,7 +28,7 @@ install: pip install -r requirements.txt
 script: 
       # - python myunittestp.py
       # - python myunittestq.py
-      - nosetests -w tests myunittestq myunittestp mynosetest testwithmock -v --with-coverage
+      - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb -v --with-coverage
 
 # matirx:
 #   include:
