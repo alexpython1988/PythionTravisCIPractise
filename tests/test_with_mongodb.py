@@ -128,6 +128,7 @@ class TestMongoDB(unittest.TestCase):
 		self.assertEqual("1234", r2['upwd'])
 
 		r3 = self.mp.update_by_id(replace_data)
+		#print(r3)
 		self.assertEqual(1, r3)
 
 		r4 = self.mp.get_by_id(1)
