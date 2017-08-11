@@ -36,10 +36,13 @@ services:
 before_script:
   - sleep 15
 
+#default will be changed to "trusty" (Ubuntu trusty 14.02) later
+dist: "precise"
+
 script: 
       # - python myunittestp.py
       # - python myunittestq.py
-      - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb -v --with-coverage
+      - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb test_flask -v --with-id
 
 # matirx:
 #   include:

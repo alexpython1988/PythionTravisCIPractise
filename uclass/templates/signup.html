@@ -1,0 +1,44 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>111</title>
+</head>
+<body>
+	<form action="/signup" method="POST">
+	<div class="signup">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Login</h1>
+			</div>
+ 
+			<div class="signup-form">
+				<div class="control-group">
+				<input type="text" class="login-field" value="" placeholder="username" name="username">
+				<label class="signup-field-icon fui-user" for="signup-name"></label>
+				</div>
+ 
+				<div class="control-group">
+				<input type="password" class="signup-field" value="" placeholder="password" name="password">
+				<label class="signup-field-icon fui-lock" for="signup-pass"></label>
+				</div>
+ 
+                <input type="submit" value="signup" class="btn btn-primary btn-large btn-block" >
+			    <br>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		    <ul class=flashes>
+		    {% for message in messages %}
+		      <li>{{ message }}</li>
+		    {% endfor %}
+		    </ul>
+		  {% endif %}
+		{% endwith %}	
+	</div>
+</form>
+
+</body>

@@ -1,3 +1,5 @@
 nose
 facebook-sdk
 pymongo
+flask
+flask_pymongo

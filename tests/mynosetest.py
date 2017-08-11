@@ -1,5 +1,3 @@
-import sys
-sys.path.append("../uclass/")
 import os
 #not sure how to use
 #from nose.tools import with_setup
@@ -76,9 +74,9 @@ class TestT:
 
 #use the run_buffered from nose.plugins.plugintest to run in script instead from shell
 #in this method, some results have been removed
-#if __name__ == '__main__':
-	# file = os.path.join(os.path.dirname(__file__), 'mynosetest.py')
-	# run(argv=['nosetests', '-v', file])
+if __name__ == '__main__':
+	file = os.path.join(os.path.dirname(__file__), 'mynosetest.py')
+	run(argv=['nosetests', '-v', file])
 	#run(argv=['nosetests', '-v', file], plugins=[ConfigMyTest()])
-	# result = nose.run(TestT)
-	# #print(result)
+	result = nose.run(TestT)
+	#print(result)

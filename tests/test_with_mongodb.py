@@ -47,6 +47,9 @@ class TestMongoDB(unittest.TestCase):
 		return_value = self.mp.connect_to_collection(coll_name_pos)
 		self.assertTrue(return_value)
 
+		# import time
+		# time.sleep(1)
+
 		#not exist case
 		coll_name_neg = "notexist"
 		return_value = self.mp.connect_to_collection(coll_name_neg)
@@ -143,4 +146,4 @@ class TestMongoDB(unittest.TestCase):
 		self.assertEqual(output, "{'_id': 0, 'test': 1}")
 
 if __name__ == '__main__':
-	unittest.main()
+	unittest.main(verbosity=2)

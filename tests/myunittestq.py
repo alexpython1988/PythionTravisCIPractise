@@ -1,14 +1,14 @@
-import sys
-#use linux style
-sys.path.append("../uclass/")
-
+"""This module does blah blah."""
 import unittest
 #we can use nose tools in unittest
-from nose.tools import timed
-from MyStack import MyStack
-#from PythionTravisCIPractise.uclass.MyStack import MyStack
 import time
+from nose.tools import timed
+from uclass.MyStack import MyStack
 #import timeout_decorator
+# import sys
+#use linux style
+# sys.path.append("../uclass/")
+# from MyStack import MyStack
 
 class MyStackTest(unittest.TestCase):
 	def setUp(self):
