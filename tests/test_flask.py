@@ -15,7 +15,10 @@ class SimpleFlaskAppTest(unittest.TestCase):
 	def setUpClass(self):
 		# app.config['MONGO_URI'] = "mongodb://localhost:27017"
 		self.app = app.test_client()
+		#print(dir(self.app))
 		self.app.testing = True
+		# with self.app.app_context():
+		# 	self.app.config['MONGO_URI'] ="mongodb://localhost:27017"
 		self.client = MongoClient("localhost:27017")
 		self.client.simple_flask_login.users.insert_one({"_id": "aaa", "password": "bbb"})
 

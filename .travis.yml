@@ -27,6 +27,9 @@ addons:
     packages:
       - mongodb-org-server
       - mongodb-org-shell
+    #add chrome for selenium test
+    #chrome: stable
+
 
 services:
    - mongodb
