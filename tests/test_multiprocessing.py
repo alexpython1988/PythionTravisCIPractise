@@ -85,7 +85,7 @@ def sub2(month):
 
 	return month
 
-def out1(future, file):
+def out2(future, file):
 	res = future.result()
 	if not os.path.isfile(file):
 		mode = "w"
@@ -100,27 +100,53 @@ def out1(future, file):
 	# with open(file, mode) as f:
 	# 		print(res, file=f, end='\n')
 
-def sub1(season):
-	for i in range(100):
-		season += 1
+def out1(future, file):
+	res, months = future.result()
+	if not os.path.isfile(file):
+		mode = "w"
+	else:
+		mode = "a"
+	lock.acquire()
+	try:
+		with open(file, mode) as f:
+			print(res, file=f, end='\n')
+	finally:
+		lock.release()
+	# with open(file, mode) as f:
+	# 		print(res, file=f, end='\n')
 
-	months = range(0, (season//10000)+10)
-	#print(season//10000)
 	futures_= []
 
 	with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
 		# lock.acquire()
 		for month in months:
 			future_ = executor.submit(sub2, month=month)
-			future_.add_done_callback(functools.partial(out1, file="1/out2.txt"))
+			future_.add_done_callback(functools.partial(out2, file="1/out2.txt"))
 			futures_.append(future_)
 		# lock.release()
 		concurrent.futures.wait(futures_)
+
+def sub1(season):
+	for i in range(100):
+		season += 1
+
+	months = range(0, (season//100000)+10)
+	#print(season//10000)
+	# futures_= []
+
+	# with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+	# 	# lock.acquire()
+	# 	for month in months:
+	# 		future_ = executor.submit(sub2, month=month)
+	# 		future_.add_done_callback(functools.partial(out1, file="1/out2.txt"))
+	# 		futures_.append(future_)
+	# 	# lock.release()
+	# 	concurrent.futures.wait(futures_)
 	
-	return season
+	return season, months
 
 def main():
-	seasons = range(1000)
+	seasons = range(10000)
 	futures_= []
 
 	if os.path.isfile("1/out1.txt"):
