@@ -1,0 +1,269 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>facebook_user_info_crawler_1 module &#8212; facebook version 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'version 1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="config module" href="config.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="config.html" title="config module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">facebook version 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-facebook_user_info_crawler_1">
+<span id="facebook-user-info-crawler-1-module"></span><h1>facebook_user_info_crawler_1 module<a class="headerlink" href="#module-facebook_user_info_crawler_1" title="Permalink to this headline">¶</a></h1>
+<p>The script for scapying the user information from facebook</p>
+<dl class="docutils">
+<dt>Required Packages (pip install):</dt>
+<dd>selenium
+BeautifulSoup</dd>
+<dt>Required Driver:</dt>
+<dd>chromediver</dd>
+</dl>
+<p>The facebook accounts and other configuration can be found in accountandpwd.txt and config.py
+If current accounts cannot be used anymore, you have to apply new account</p>
+<dl class="docutils">
+<dt>.._github:</dt>
+<dd><a class="reference external" href="https://github.com/alexpython1988/facebook-friend-list-info">https://github.com/alexpython1988/facebook-friend-list-info</a>-</dd>
+</dl>
+<p>author = “Xi Yang”</p>
+<dl class="class">
+<dt id="facebook_user_info_crawler_1.Facebook">
+<em class="property">class </em><code class="descclassname">facebook_user_info_crawler_1.</code><code class="descname">Facebook</code><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.backup">
+<code class="descname">backup</code><span class="sig-paren">(</span><em>_no</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.backup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.crawler_config_and_login_account">
+<code class="descname">crawler_config_and_login_account</code><span class="sig-paren">(</span><em>_no</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.crawler_config_and_login_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>This fucntion is used to handle facebook login
+A new chrome browser will be created, and direct to facebook login page. The browser creation require a chrome driver, and the driver location need to be provided
+The login process will finish with account and password from config file.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>_no: Int </dt>
+<dd>used to identify the index of current running task, the facebook account used chosen from the config file is based on this index</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>browser will login finished tag, the browser should be ready to process futher scrapy work</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.error_url">
+<code class="descname">error_url</code><span class="sig-paren">(</span><em>url</em>, <em>_no</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.error_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.get_info_of_user">
+<code class="descname">get_info_of_user</code><span class="sig-paren">(</span><em>browser</em>, <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.get_info_of_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function handle the detail of scrapy work for each information sections</p>
+<dl class="docutils">
+<dt>args</dt>
+<dd>browser: working env
+index: identify which section to scrapy</dd>
+<dt>returns</dt>
+<dd>info: obtained information</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.handle_each_new_friend_in_list">
+<code class="descname">handle_each_new_friend_in_list</code><span class="sig-paren">(</span><em>browser</em>, <em>next_url</em>, <em>person_info</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.handle_each_new_friend_in_list" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>This function seperates the scrapy work into two parts:</dt>
+<dd><ol class="first last arabic simple">
+<li>scrapy friend list</li>
+<li>scrapy user’s basic public information</li>
+</ol>
+</dd>
+<dt>args:</dt>
+<dd>browser: chrome browser for handling web browsing
+next_url: the url of user that is going to be scrapied
+person_info: identify current facebook account that is under scrapying</dd>
+<dt>returns:</dt>
+<dd>current browser</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.load_task">
+<code class="descname">load_task</code><span class="sig-paren">(</span><em>file</em>, <em>start</em>, <em>end</em>, <em>_no</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.load_task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.output_json">
+<code class="descname">output_json</code><span class="sig-paren">(</span><em>file</em>, <em>ui</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.output_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function handles the output method for obtained information</p>
+<dl class="docutils">
+<dt>args:</dt>
+<dd>file: output file
+ui: ontained user information</dd>
+<dt>todo:</dt>
+<dd><dl class="first last docutils">
+<dt>need to finish the other output methods</dt>
+<dd><ol class="first last arabic simple">
+<li>send data via email</li>
+<li>store information into database (mongodb)</li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><em>browser_1</em>, <em>index</em>, <em>_no</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is aim to reset the current working env with new accouts since facebook does not allow one user to login and search other’s information for long time. 
+The main purpose is to prevent facebook locked the current account</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>args:</dt>
+<dd>browser_1: working env
+index: identify swich to which account
+_no: indetify which acocunt in confid file to use</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.scrapy_friend_list_based_on_account">
+<code class="descname">scrapy_friend_list_based_on_account</code><span class="sig-paren">(</span><em>browser</em>, <em>person_info</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.scrapy_friend_list_based_on_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function handles the scrapy of user’s friend list</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>browser: selenium browser that handle the browsing work
+person_info: identify current facebook account that is under scrapying</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.scrapy_friend_list_of_friends">
+<code class="descname">scrapy_friend_list_of_friends</code><span class="sig-paren">(</span><em>browser</em>, <em>person_info</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.scrapy_friend_list_of_friends" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.scrapy_user_info">
+<code class="descname">scrapy_user_info</code><span class="sig-paren">(</span><em>browser</em>, <em>uid</em>, <em>person_info</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.scrapy_user_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functions is organize the scrapy work for user’s public information</p>
+<dl class="docutils">
+<dt>args:</dt>
+<dd>browser: working env
+uid: user id used for logging
+person_info: identify current facebook account that is under scrapying</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.task">
+<code class="descname">task</code><span class="sig-paren">(</span><em>browser_1</em>, <em>_no</em><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="facebook_user_info_crawler_1.Facebook.use_virtual_screen">
+<code class="descname">use_virtual_screen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#facebook_user_info_crawler_1.Facebook.use_virtual_screen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="config.html"
+                        title="previous chapter">config module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/facebook_user_info_crawler_1.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="config.html" title="config module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">facebook version 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, alex.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
