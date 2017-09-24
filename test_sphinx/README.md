@@ -35,5 +35,8 @@ html_theme = 'default'
 > sphinx-apidoc -o rst/ scripts/
 ```
 - copy the modules.rst and rename it as index.rst or you can copy the index.rst in the root folder to rst folder
-- run command sphinx-build -b html rst html/ 
+- run command
+```sh
+sphinx-build -b html rst html/ 
+```
 - if code changed, and doc need to be updated, just remove the files from rst and html folder and re-run the steps above
