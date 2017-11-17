@@ -24,6 +24,7 @@ services:
 before_script:
 - export PATH=~/.local/bin:$PATH
 - sleep 11
+- chmod 700 ecr_credentials.sh 
 - ./ecr_credentials.sh
 - aws ecr get-login --no-include-email --region us-east-1
 dist: precise
