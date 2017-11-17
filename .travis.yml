@@ -26,10 +26,10 @@ before_script:
 - sleep 15
 - mkdir -p ~/.aws
 - cat > ~/.aws/credentials << EOL
-[default]
-aws_access_key_id = ${AWS_ACCESS_KEY_ID}
-aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
-EOL
+  [default]
+  aws_access_key_id = ${AWS_ACCESS_KEY_ID}
+  aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
+  EOL
 - ./ecr_credentials.sh
 - aws ecr get-login --no-include-email --region us-east-1
 dist: precise
