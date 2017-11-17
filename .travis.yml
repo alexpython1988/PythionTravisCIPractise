@@ -1,66 +1,37 @@
-notifications: # set notification options
+notifications:
   email:
     recipients:
-      - alexgre@ufl.edu
-    # change is when the repo status goes from pass to fail or vice versa
+    - alexgre@ufl.edu
     on_success: always
     on_failure: always
-  # Or we could just disable all email
-  # email: false
-
 language: python
-
-#to use docker sudo must be required
 sudo: required
-
 python:
-  - "3.6"
-# script: python myunittestp.py
-
-install: 
-  - pip install -r requirements.txt
-  - pip install awscli --upgrade
-
-#set up database: mongodb 
+- '3.6'
+install:
+- pip install -r requirements.txt
+- pip install awscli --upgrade
 addons:
   apt:
     sources:
-      - mongodb-upstart
-      - mongodb-3.2-precise
+    - mongodb-upstart
+    - mongodb-3.2-precise
     packages:
-      - mongodb-org-server
-      - mongodb-org-shell
-    #add chrome for selenium test
-    #chrome: stable
-
-
+    - mongodb-org-server
+    - mongodb-org-shell
 services:
-   - mongodb
-# jobs:
-#   include:
-#     - stage: test
-
+- mongodb
 before_script:
-  - export PATH=~/.local/bin:$PATH
-  - sleep 15
-  - eval $(aws ecr get-login --region us-east-1)
-#default will be changed to "trusty" (Ubuntu trusty 14.02) later
-dist: "precise"
-
+- export PATH=~/.local/bin:$PATH
+- sleep 15
+- eval $(aws ecr get-login --region us-east-1)
+dist: precise
 script:
-
-      # - python myunittestp.py
-      # - python myunittestq.py
-      - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb test_flask -v --with-id
-
-# matirx:
-#   include:
-#     - python: 3.6
-#     script: python myunittestp.py
-
-#     - python: 3.6
-#     script: python myunittestq.py
-
+- nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb
+  test_flask -v --with-id
 after_script:
-  - pkill mongod
-
+- pkill mongod
+env:
+  matrix:
+  - secure: iyLWf9XwgrWd9LhcMT77Ayl/uH2lgOCQgMSC0/y6oIpHOflTmUecGyfTlVbQstZhGyF4KPgkZbY+vYE5emp3DRfPrc7+x42hHcOzEZo6Gp6llpzOtymsEA9FrB85CVvg+tDHnwENtSHitcXIe5b1zvbryBKR7LZ2vIFv5Ym0XcEdwVYXPvf0w2fPjBPnbk7MSTCDasVeJwueoxQsFQ3PDo2PeX9brD4PPUjFSopclbkDRkWQA1m3vC9tz8Z3PWAXIE1k5Wm2706tW0XBG2EGA2herIpZ4xKnTLQr5Gv3IKjCK2F52rJkJiFspYRMsY88+COzVoTuelaaw1PfUGKvfERVNdEqJokgkxZhV5IW4Gdf53201uobS4n+7od1vq6R0C0Pu2TIdZJRn2UZu+Yw3oh1U/KWRum8w+huyfpyKmv2zVIwqfWSh15JXIXjUee1C9poo8fYjHyGQviF9B2SuzO19qOSErSkUF+ZVFJbmSH2Hz8M2Q7TQhV/e6jRuKL0dnDtFkHY9rRiPBSK+BeSIerHuREwQcg3NHiuLqxgG9R9Wz2uSr5kURiy5QVGypDBjcfDP7veKEfcFjYSmTl4qN6QMo2LmPf4qJniIJgSWrOECNbSojGjo4HYz4+96R2bBBnsmRkr7C9aOiGIHn6P/mT/PVYmHBr5fqu4CXLDUZw=
+  - secure: sDpK00sk8EBYksBkSoQfGuom2hYJCRr73C3b6K5mwxfOYIkQf/J21oVE7z+b7OePXpa7ThxgNYgVf2jXPX8Ghbr/X9ArZOyHJN82+2xPGvYeiWtbkRLSuE9/EJjcaEfYXdrOONVrmClyIHAEkc1b5+TwhsEVQM8jYvqy62yPwgnC8CDo22KKo8MxObCrefVToZHAeHMhLPePSSNiIsyT1J/tTuvRRBCf1QrDNxTxT2pi39W3RBkMbjTPInz74RV8fcdByZD24TBleU0v/otG3SOt5hScXJ5pUcOpnW+SwdraAozGLLtuPxFXVSqif5qKoTIwMFPyfumfFDdBn3kiftDnTwprZhTu3HTaMGptqgARljknXORoVHKFRNBZd0Jnn8ug5Hg4Os82DzZKBZEREwmIkfWjYpfZXx/M0sb1jkdwVktlvSGasYcNGcjS4dtmVSGdk5oLuns2EPhUa1HB3GcIfiRkwjKBu2NHmUNlhAR9BiiPA0kbSmbzBttdGSx0KfrFDdfk6yG1dfqMd81FwTjUXTumOMoCOvSuyi6bJOJhlYlQWZy5LKCOjLUMTtkn4iG2BVkHeZC3AT07jXIBMgz6bTiGlB/BS7mPAJzwwI+nKe4J+FozZGAZ6tK3yqzoGRJWuUR7nQzwHIf3ypFUj1wGd7TcfeWCBG0uxcjLu/E=
