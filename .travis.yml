@@ -10,13 +10,16 @@ notifications: # set notification options
 
 language: python
 
-sudo: false
+#to use docker sudo must be required
+sudo: required
 
 python:
   - "3.6"
 # script: python myunittestp.py
 
-install: pip install -r requirements.txt
+install: 
+  - pip install -r requirements.txt
+  - pip install awscli --upgrade
 
 #set up database: mongodb 
 addons:
@@ -36,13 +39,16 @@ services:
 # jobs:
 #   include:
 #     - stage: test
-before_script:
-  - sleep 15
 
+before_script:
+  - export PATH=~/.local/bin:$PATH
+  - sleep 15
+  - eval $(aws ecr get-login --region us-east-1)
 #default will be changed to "trusty" (Ubuntu trusty 14.02) later
 dist: "precise"
 
-script: 
+script:
+
       # - python myunittestp.py
       # - python myunittestq.py
       - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb test_flask -v --with-id
@@ -57,3 +63,4 @@ script:
 
 after_script:
   - pkill mongod
+
