@@ -32,6 +32,10 @@ script:
 - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb
   test_flask -v --with-id
 after_script:
+- if [[ ${TEST -eq "T" ]]
+  then echo using T
+  else echo using F
+  fi
 - pkill mongod
 env:
   global:
