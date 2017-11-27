@@ -24,19 +24,18 @@ services:
 before_script:
 - export PATH=~/.local/bin:$PATH
 - sleep 11
-- chmod 700 ecr_credentials.sh 
-- ./ecr_credentials.sh
-- aws ecr get-login --no-include-email --region us-east-1
 dist: precise
 script:
 - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb
   test_flask -v --with-id
 after_script:
-- if [[ ${TEST} -eq "T" ]] << EOT
-  then echo using T
-  else echo using F
-  fi
-  EOT
+- if [ ${TEST} -eq T ]; then echo using T; else echo using F; fi
+- | 
+    if [ ${TEST} -eq T ]; then 
+      chmod 700 ecr_credentials.sh 
+      ./ecr_credentials.sh
+      aws ecr get-login --no-include-email --region us-east-1
+    fi
 - pkill mongod
 env:
   global:
