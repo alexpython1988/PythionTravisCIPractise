@@ -29,7 +29,7 @@ script:
 - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb
   test_flask -v --with-id
 after_script:
-- if [ ${TEST} == T ]; then echo using T; else echo using F; fi
+- if [ ${TEST} == T ]; then echo using T; else travis_terminate 1; fi
 - | 
     if [ ${TEST} == T ]; then 
       chmod 700 ecr_credentials.sh 
