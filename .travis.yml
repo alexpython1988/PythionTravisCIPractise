@@ -39,7 +39,7 @@ after_success:
       cat 1.txt
       #
       git config --global user.name "alexpython1988"
-      git config --global user.password d7fac9b1612e5885e34ba2fe9748729f3b709716
+      git config --global user.password ${GITKEY}
       git add .
       git commit -m "create 1.txt"
       git push origin master
