@@ -36,14 +36,13 @@ after_success:
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.txt
-      cat 1.txt
-      #
+      git checkout master
       git config --global user.name "alexpython1988"
+      git config --global user.email alexgre@ufl.edu
       git config --global user.password ${GITKEY}
       git add .
       git commit -m "create 1.txt"
       git push origin master
-      #
     else
       echo jajajaj!!!!!!;
     fi
