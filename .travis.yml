@@ -23,13 +23,12 @@ services:
 - mongodb
 before_script:
 - export PATH=~/.local/bin:$PATH
-- sleep 11
 - git config --global user.name "alexpython1988"
 - git config --global user.email alexgre@ufl.edu
 - git config --global user.password ${GK}
 - eval "$(ssh-agent -s)"
 - cat id_rsa
-- sudo ssh-add -k id_rsa
+- sudo ssh-add id_rsa
 - echo $(git config --global user.name)
 - echo $(git config --global user.password)
 dist: precise
