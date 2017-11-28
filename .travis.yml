@@ -36,6 +36,7 @@ after_success:
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.txt
+      git config --global push.default simple
       git add .
       git commit -m "test"
       git push
