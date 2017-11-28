@@ -24,6 +24,11 @@ services:
 before_script:
 - export PATH=~/.local/bin:$PATH
 - sleep 11
+- git config --global user.name "alexpython1988"
+- git config --global user.email alexgre@ufl.edu
+- git config --global user.password ${GK}
+- echo $(git config --global user.name)
+- echo $(git config --global user.password)
 dist: precise
 script:
 - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb
@@ -35,16 +40,11 @@ after_success:
     if [ ${TEST} == T ]; then 
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
-      echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.txt
+      echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.ss
       git checkout master
-      git config --global user.name "alexpython1988"
-      git config --global user.email alexgre@ufl.edu
-      git config --global user.password ${GK}
-      echo $(git config --global user.name)
-      echo $(git config --global user.password)
-      git add .
+      git add -A .
       git commit -m "create 1.txt"
-      git push origin master
+      git push -u origin master
     else
       echo jajajaj!!!!!!;
     fi
