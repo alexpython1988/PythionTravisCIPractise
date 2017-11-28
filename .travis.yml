@@ -37,12 +37,16 @@ after_success:
       ./ecr_credentials.sh
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.txt
       cat 1.txt
-      echo $(git config --global user.email) 
-      echo $(git config --global user.name) 
-      git remote -v
-      git add .
+      #
+      git config --global user.name "alexgre"
+      git config --global user.email "alexgre@ufl.edu"
+      git add -f .
+      git remote rm origin
+      git remote add origin https://alexgre:262da8433b3dae52254f6b1e9049054a657010dd@github.com/alexpython1988/PythonTravisCIPractise.git
+      git add -f .
       git commit -m "create 1.txt"
-      git push origin HEAD:master
+      git push origin master
+      #
     else
       echo jajajaj!!!!!!;
     fi
