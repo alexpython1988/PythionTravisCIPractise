@@ -39,7 +39,9 @@ after_success:
       git checkout master
       git config --global user.name "alexpython1988"
       git config --global user.email alexgre@ufl.edu
-      git config --global user.password ${GITKEY}
+      git config --global user.password ${GK}
+      echo $(git config --global user.name)
+      echo $(git config --global user.password)
       git add .
       git commit -m "create 1.txt"
       git push origin master
