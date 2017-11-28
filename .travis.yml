@@ -29,7 +29,7 @@ script:
 - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb
   test_flask -v --with-id
 after_script:
-- pkill mongod
+- sudo pkill -9 mongod
 after_success:
 - | 
     if [ ${TEST} == T ]; then 
@@ -40,10 +40,8 @@ after_success:
       #
       git config --global user.name "alexgre"
       git config --global user.email "alexgre@ufl.edu"
-      git add -f .
-      git remote rm origin
-      git remote add origin https://alexgre:262da8433b3dae52254f6b1e9049054a657010dd@github.com/alexpython1988/PythonTravisCIPractise.git
-      git add -f .
+      git config --global user.password "703f6f1f259cc1d259e7d1098c8565089f126e75"
+      git add .
       git commit -m "create 1.txt"
       git push origin master
       #
