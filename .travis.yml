@@ -28,6 +28,7 @@ before_script:
 - git config --global user.email alexgre@ufl.edu
 - git config --global user.password ${GK}
 - eval "$(ssh-agent -s)"
+- sudo ssh-add -K id_rsa
 - echo $(git config --global user.name)
 - echo $(git config --global user.password)
 dist: precise
@@ -42,10 +43,10 @@ after_success:
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.ss
-      git remote add upstream https://github.com/alexpython1988/PythonTravisCIPractise.git
+      git remote set-url origin git@github.com:alexpython1988/PythonTravisCIPractise
       git add -A .
       git commit -m "create 1.ss"
-      git push -u origin master
+      git push origin master
     else
       echo jajajaj!!!!!!;
     fi
