@@ -28,7 +28,8 @@ before_script:
 - git config --global user.email alexgre@ufl.edu
 - git config --global user.password ${GK}
 - eval "$(ssh-agent -s)"
-- sudo ssh-add -K id_rsa
+- cat id_rsa
+- sudo ssh-add -k id_rsa
 - echo $(git config --global user.name)
 - echo $(git config --global user.password)
 dist: precise
