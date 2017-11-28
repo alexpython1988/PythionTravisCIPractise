@@ -29,6 +29,7 @@ before_script:
 - eval "$(ssh-agent -s)"
 - cat id_rsa
 - sudo ssh-add id_rsa
+- git remote set-url origin git@github.com:alexpython1988/PythonTravisCIPractise.git
 - echo $(git config --global user.name)
 - echo $(git config --global user.password)
 dist: precise
@@ -43,9 +44,10 @@ after_success:
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.ss
-      git remote set-url origin git@github.com:alexpython1988/PythonTravisCIPractise
-      git add -A .
-      git commit -m "create 1.ss"
+      echo print("hello traivs") > HellowWorld.py
+      python HellowWorld.py
+      git add .
+      git commit -m "push from travis-CI"
       git push origin master
     else
       echo jajajaj!!!!!!;
