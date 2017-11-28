@@ -24,7 +24,7 @@ services:
 before_script:
 - export PATH=~/.local/bin:$PATH
 - sleep 11
-- git config --global user.name "alexpython1988"
+- git config --global user.name alexpython1988
 - git config --global user.email alexgre@ufl.edu
 - git config --global user.password ${GK}
 - echo $(git config --global user.name)
@@ -41,7 +41,7 @@ after_success:
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.ss
-      git checkout master
+      git remote add upstream https://github.com/alexpython1988/PythonTravisCIPractise.git
       git add -A .
       git commit -m "create 1.txt"
       git push -u origin master
