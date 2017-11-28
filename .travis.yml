@@ -38,9 +38,8 @@ after_success:
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.txt
       cat 1.txt
       #
-      git config --global user.name "alexpython1988"
-      git config --global user.email "alexgre@ufl.edu"
-      git config --global user.password "703f6f1f259cc1d259e7d1098c8565089f126e75"
+      git config --global user.name alexpython1988
+      git config --global user.password 703f6f1f259cc1d259e7d1098c8565089f126e75
       git add .
       git commit -m "create 1.txt"
       git push origin master
