@@ -35,7 +35,10 @@ after_success:
     if [ ${TEST} == T ]; then 
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
-      aws ecr get-login --no-include-email --region us-east-1
+      echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.txt
+      git add .
+      git commit -m "test"
+      git push
     else
       echo jajajaj!!!!!!;
     fi
