@@ -26,7 +26,8 @@ before_script:
 - sleep 11
 - git config --global user.name "alexpython1988"
 - git config --global user.email alexgre@ufl.edu
-- git config --global user.password "${GK}"
+- git config --global user.password ${GK}
+- eval "$(ssh-agent -s)"
 - echo $(git config --global user.name)
 - echo $(git config --global user.password)
 dist: precise
