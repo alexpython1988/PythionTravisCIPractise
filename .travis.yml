@@ -45,6 +45,7 @@ after_success:
       ./ecr_credentials.sh
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.ss
       echo 123 > alex.py
+      git checkout master
       git add .
       git commit -m "push from travis-CI"
       git push origin master
