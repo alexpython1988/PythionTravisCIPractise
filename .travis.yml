@@ -44,8 +44,7 @@ after_success:
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.ss
-      echo print("hello traivs") > HellowWorld.py
-      python HellowWorld.py
+      echo 123 > alex.py
       git add .
       git commit -m "push from travis-CI"
       git push origin master
