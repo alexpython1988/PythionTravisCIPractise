@@ -40,19 +40,20 @@ after_script:
 - sudo pkill -9 mongod
 after_success:
 - | 
-    if [ ${TEST} == T ]; then 
+    if [ ${TEST} == T ]; then
+      ${TEST} = $"F"
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
       echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.ss
       echo 123 > alex.py
       git checkout master
-      git add .
-      git commit -m "push from travis-CI"
+      git add -A
+      git commit -m "push from travis-CI [ci skip]"
       git push origin master
     else
       echo jajajaj!!!!!!;
     fi
-- if [ ${TEST} == T ]; then echo using T; else travis_terminate 1; fi
+- if [ ${TEST} == T ]; then echo using T; else travis_terminate 0; fi
 env:
   global:
   - secure: HFQMHMisxNmgtlt+N9MB4kc21akgGjRY/+JS84EnhHeP4Qgx60IU6arOUg9G6LMmN1nBCNmHaVeIhCwTbfu5N4i2VxXU+cshd4CVZgt6T5L2WhdDPXz0FvqtG4EgYgd1EBQcJY+xqGrr7+kL6gynsW2CVFyiGwPIgTnXSOGuHk6McEFeXLXKTTbpxENHpCcgZXlNFUt7Xp+0qEnpK/Q3y2WMHZO5dmexYC9RW/bIvIiPv+a5nPi82valPVGENGKolA71SvrlUv8N/sqVJGQfVfHE9Bi7TMbr7+VS5vaH19mv/JPnzAvkRdUu+bDZLp+md2pVrQRJL+qx/MmRVA/lQ7ApJgf8Q8P3xHwPEOl31Ie/MnSatRuj6I9w9Nm4AMwVoDicpdeRyPPQwSEH9y9k7H5IH4hMzSfug/UhKz2PhTB7xKxu/sY0gZ47I4pIFcKOmk/wjUuElK7B/eMr5+ARFZtdqW4lJODGNtevf8VvOAtxPedvMNtSVpNSDiWWsby6iscnYXtKa/pOGB92Ox171IKEkPofeIgofE/bvUHP5tNg6jBuCdDZvWGhJt1B7j79UnPQBaxYhoiRjzY92aPOq8pLwUOf/B9sao+mL0ZIMn7ilKRklfVI3UBtT9xKVvnLpngCnDKWigJD5/CojTpIA8yXHLgAWFDZP7LNHLPdpjg=
