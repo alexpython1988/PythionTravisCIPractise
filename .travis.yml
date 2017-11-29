@@ -23,15 +23,11 @@ services:
 - mongodb
 before_script:
 - export PATH=~/.local/bin:$PATH
-- git config --global user.name "alexpython1988"
-- git config --global user.email alexgre@ufl.edu
-- git config --global user.password ${GK}
+# - git config --global user.name "alexpython1988"
+# - git config --global user.email alexgre@ufl.edu
 - eval "$(ssh-agent -s)"
-- cat id_rsa
 - sudo ssh-add id_rsa
 - git remote set-url origin git@github.com:alexpython1988/PythonTravisCIPractise.git
-- echo $(git config --global user.name)
-- echo $(git config --global user.password)
 dist: precise
 script:
 - nosetests -w tests myunittestq myunittestp mynosetest testwithmock test_with_mongodb
@@ -53,7 +49,7 @@ after_success:
     else
       echo jajajaj!!!!!!;
     fi
-- if [ ${TEST} == T ]; then echo using T; else travis_terminate 0; fi
+- if [ ${TEST} == T ]; then echo using T; else travis_terminate 1; fi
 env:
   global:
   - secure: HFQMHMisxNmgtlt+N9MB4kc21akgGjRY/+JS84EnhHeP4Qgx60IU6arOUg9G6LMmN1nBCNmHaVeIhCwTbfu5N4i2VxXU+cshd4CVZgt6T5L2WhdDPXz0FvqtG4EgYgd1EBQcJY+xqGrr7+kL6gynsW2CVFyiGwPIgTnXSOGuHk6McEFeXLXKTTbpxENHpCcgZXlNFUt7Xp+0qEnpK/Q3y2WMHZO5dmexYC9RW/bIvIiPv+a5nPi82valPVGENGKolA71SvrlUv8N/sqVJGQfVfHE9Bi7TMbr7+VS5vaH19mv/JPnzAvkRdUu+bDZLp+md2pVrQRJL+qx/MmRVA/lQ7ApJgf8Q8P3xHwPEOl31Ie/MnSatRuj6I9w9Nm4AMwVoDicpdeRyPPQwSEH9y9k7H5IH4hMzSfug/UhKz2PhTB7xKxu/sY0gZ47I4pIFcKOmk/wjUuElK7B/eMr5+ARFZtdqW4lJODGNtevf8VvOAtxPedvMNtSVpNSDiWWsby6iscnYXtKa/pOGB92Ox171IKEkPofeIgofE/bvUHP5tNg6jBuCdDZvWGhJt1B7j79UnPQBaxYhoiRjzY92aPOq8pLwUOf/B9sao+mL0ZIMn7ilKRklfVI3UBtT9xKVvnLpngCnDKWigJD5/CojTpIA8yXHLgAWFDZP7LNHLPdpjg=
