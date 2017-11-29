@@ -26,6 +26,7 @@ before_script:
 - git config --global user.name "alexpython1988"
 - git config --global user.email alexgre@ufl.edu
 - eval "$(ssh-agent -s)"
+- openssl aes-256-cbc -K $encrypted_312ee64b5c95_key -iv $encrypted_312ee64b5c95_iv -in id_rsa.enc -out id_rsa -d
 - sudo ssh-add id_rsa
 - git remote set-url origin git@github.com:alexpython1988/PythonTravisCIPractise.git
 dist: precise
