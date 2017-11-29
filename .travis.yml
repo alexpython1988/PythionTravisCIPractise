@@ -23,8 +23,8 @@ services:
 - mongodb
 before_script:
 - export PATH=~/.local/bin:$PATH
-# - git config --global user.name "alexpython1988"
-# - git config --global user.email alexgre@ufl.edu
+- git config --global user.name "alexpython1988"
+- git config --global user.email alexgre@ufl.edu
 - eval "$(ssh-agent -s)"
 - sudo ssh-add id_rsa
 - git remote set-url origin git@github.com:alexpython1988/PythonTravisCIPractise.git
@@ -40,8 +40,9 @@ after_success:
       ${TEST} = $"F"
       chmod 700 ecr_credentials.sh 
       ./ecr_credentials.sh
-      echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.ss
-      echo 123 > alex.py
+      echo $(aws ecr get-login --no-include-email --region us-east-1) > 1.sta
+      echo trycatch > alex.py
+      rm 1.ss
       git checkout master
       git add -A
       git commit -m "push from travis-CI [ci skip]"
